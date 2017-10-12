@@ -123,6 +123,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if let anno = view.annotation as? PokeAnnotation {
+            
             let place = MKPlacemark(coordinate: anno.coordinate)
             let destination = MKMapItem(placemark: place)
             destination.name = "Pokemon Sighting"
