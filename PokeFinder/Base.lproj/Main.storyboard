@@ -33,7 +33,8 @@
                                 </constraints>
                                 <state key="normal" image="pokeball"/>
                                 <connections>
-                                    <action selector="spotRandomPokemon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9UY-FD-mDV"/>
+                                    <action selector="spotRandomPokemon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VnV-Jq-aoS"/>
+                                    <segue destination="xGU-h9-iEX" kind="presentation" identifier="segueShowNavigation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="9t5-hc-spP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -54,6 +55,115 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
+        </scene>
+        <!--Poke View Controller-->
+        <scene sceneID="M69-4s-C29">
+            <objects>
+                <viewController id="xGU-h9-iEX" customClass="PokeViewController" customModule="PokeFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="cu0-QT-0UQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mls-UK-DBJ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-hu-LW3">
+                                    <rect key="frame" x="30" y="50" width="315" height="577"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="lDF-6y-4JF">
+                                        <size key="itemSize" width="96" height="120"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="OCG-cJ-r1D" customClass="PokeCell" customModule="PokeFinder" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="120"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2xd-0m-orJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="96" id="C8L-Y3-rXm"/>
+                                                            <constraint firstAttribute="height" constant="96" id="bZT-Jd-Mpa"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="POM-1C-Ipo">
+                                                        <rect key="frame" x="5" y="96" width="86" height="24"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </view>
+                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="POM-1C-Ipo" secondAttribute="trailing" constant="5" id="HpQ-54-0ej"/>
+                                                <constraint firstItem="POM-1C-Ipo" firstAttribute="top" secondItem="2xd-0m-orJ" secondAttribute="bottom" id="Ks4-lX-CPX"/>
+                                                <constraint firstItem="2xd-0m-orJ" firstAttribute="top" secondItem="OCG-cJ-r1D" secondAttribute="top" id="SJV-g6-cV3"/>
+                                                <constraint firstAttribute="trailing" secondItem="2xd-0m-orJ" secondAttribute="trailing" id="aqr-yP-KFo"/>
+                                                <constraint firstItem="POM-1C-Ipo" firstAttribute="leading" secondItem="OCG-cJ-r1D" secondAttribute="leading" constant="5" id="j1t-iP-eZN"/>
+                                                <constraint firstAttribute="bottom" secondItem="POM-1C-Ipo" secondAttribute="bottom" id="sLE-8I-CMp"/>
+                                                <constraint firstItem="2xd-0m-orJ" firstAttribute="leading" secondItem="OCG-cJ-r1D" secondAttribute="leading" id="vph-sd-vr3"/>
+                                            </constraints>
+                                            <size key="customSize" width="96" height="120"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="PokeImg" destination="2xd-0m-orJ" id="ufD-kE-StC"/>
+                                                <outlet property="PokeNameLbl" destination="POM-1C-Ipo" id="tvL-V6-Y1x"/>
+                                            </connections>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="xGU-h9-iEX" id="XU4-Y4-k3V"/>
+                                        <outlet property="delegate" destination="xGU-h9-iEX" id="qJy-qW-JoV"/>
+                                        <outlet property="prefetchDataSource" destination="xGU-h9-iEX" id="Lu9-68-IJM"/>
+                                    </connections>
+                                </collectionView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtJ-21-Xey">
+                                    <rect key="frame" x="311" y="625" width="60" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="bcI-1m-yn7"/>
+                                        <constraint firstAttribute="height" constant="40" id="cRn-4A-M8c"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                    <size key="titleShadowOffset" width="1" height="1"/>
+                                    <state key="normal" title="Back">
+                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="backBtnPres:" destination="xGU-h9-iEX" eventType="touchUpInside" id="h7R-V4-1F8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="HtJ-21-Xey" secondAttribute="bottom" constant="2" id="5Ip-Wg-Vzn"/>
+                                <constraint firstAttribute="trailing" secondItem="HtJ-21-Xey" secondAttribute="trailing" constant="4" id="aAd-K6-tG9"/>
+                                <constraint firstItem="6zg-hu-LW3" firstAttribute="leading" secondItem="mls-UK-DBJ" secondAttribute="leading" constant="30" id="bYq-Jp-qVh"/>
+                                <constraint firstItem="6zg-hu-LW3" firstAttribute="top" secondItem="mls-UK-DBJ" secondAttribute="top" constant="50" id="d8o-aH-HGV"/>
+                                <constraint firstAttribute="trailing" secondItem="6zg-hu-LW3" secondAttribute="trailing" constant="30" id="qEk-af-n6F"/>
+                                <constraint firstAttribute="bottom" secondItem="6zg-hu-LW3" secondAttribute="bottom" constant="40" id="sgW-GC-FNi"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ViewController" id="C8m-Gw-hpg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NE6-A6-8iP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="35.532233883058474"/>
         </scene>
     </scenes>
     <resources>

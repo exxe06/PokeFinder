@@ -12,8 +12,17 @@ import FirebaseDatabase
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
-    
+
     @IBOutlet weak var mapView: MKMapView!
+    
+    private var _pokeId: Int = 0
+    var pokeId: Int {
+        get {
+            return _pokeId
+        } set {
+            _pokeId = newValue
+        }
+    }
     
     let locationManager = CLLocationManager()
     var mapHasCenteredOnce = false
@@ -22,6 +31,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(pokeId)
+        
+        pokeId = _pokeId + 1
         
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
@@ -52,7 +64,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
         
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setRegion(coordinateRegion, animated: false)
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -139,14 +151,50 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
-    @IBAction func spotRandomPokemon(_ sender: UIButton) {
-        
+    @IBAction func spotRandomPokemon(_ sender: ViewController) {
+    
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        
-        
-        let rand = arc4random_uniform(150) + 1
-        createSighting(forLocation: loc, withPokemon: Int(rand))
+        createSighting(forLocation: loc, withPokemon: pokeId)
+
     }
+    
+    // New Line
+    
+//    let reuseIdentifier = "cell"
+//    var poke = pokemon
+//    
+//    // Mark: UICollectionViewDataSource protocol
+//    
+//    //tell the collection view how many cells
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.poke.count
+//    }
+//    
+//    //make a cell of each cell index path
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        
+//        //get a reference to our storyboard cell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! PokeCell
+//        
+//        // use the outlet in our custom class to get a reference to the UILabel in the Cell
+//        cell.PokeNameLbl.text = "\(poke[indexPath.item])"
+//        cell.PokeImg.image = UIImage(named: "\(indexPath.item + 1)")
+
+        
+        //Blureffect
+//        let blur = UIBlurEffect(style: UIBlurEffectStyle.light)
+//        let blurView = UIVisualEffectView(effect: blur)
+//
+//        cell.backgroundView = blurView
+//        cell.backgroundView?.layer.cornerRadius = 5
+        
+        
+//     return cell
+//    }
 
 }
+
+
+
+
 
